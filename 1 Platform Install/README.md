@@ -9,16 +9,9 @@ root/toor
 
 ### Network
 VirtualBox
-Attached To: Host-only Adapter
-Name: vboxnet0 
+Attached To: NAT Network
+Name: BorgNetwork
 Adapter: PCnet-fastIII
-
-**Enable the network interface**
-Interface config setting:
-/etc/sysconfig/network-scripts/ifcfg-enp0s3
-
-Set:
-`ONBOOT=yes`
 
 ### SSH
 Enable SSH:
@@ -27,3 +20,24 @@ Enable SSH:
 `PermitRootLogin yes`
 
 `service sshd restart`
+
+### SSH
+Port forward port 2222 on the localhost to port 22 on the guest VM
+
+ssh root@127.0.0.1 -p 2222
+
+
+### Update and install prereqs
+
+`yum update`
+`yum install git docker net-tools`
+
+
+`git clone https://github.com/gshipley/installcentos.git`
+
+### Install OpenShift
+
+update `./installcentos/install-openshift.sh`
+`export VERSION=${VERSION:="v3.6.1"}`
+
+
