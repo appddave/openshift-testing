@@ -66,8 +66,8 @@ docker pull appddave/appd-sample
 |CONTROLLER_PORT|Controller port, typically 8090 for on prem controllers|
 |CONTROLLER_ACCOUNT_NAME|Account Name from the License screen in the controller, typically customer1|
 |CONTROLLER_ACCESS_KEY|Access Key from the license page|
-|PORTAL_USERNAME|Username for downlaod.appdynamics.com|
-|PORTAL_PASSWORD|Password for downlaod.appdynamics.com|
+|PORTAL_USERNAME|Username for download.appdynamics.com|
+|PORTAL_PASSWORD|Password for download.appdynamics.com|
 |AGENT_VERSION|Your 4 digit controller version, for example: 4.4.0.0|
 
  Add the config map to the sample app.
