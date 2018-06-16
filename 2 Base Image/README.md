@@ -62,7 +62,7 @@ docker pull appddave/appd-sample
 ## Create a new config map with the following key:value pairs
 |Key|Description|
 |--------------------------------|----------------------------------------------------------------|
-|CONTROLLER_URL|AppD Controller URL (eg. 44controllerevents-openshiftlabborgee-bjamdmba.srv.ravcloud.com)|
+|CONTROLLER_URL|AppD Controller URL (eg. 44controllerevents.appdynamics.com)|
 |CONTROLLER_PORT|Controller port, typically 8090 for on prem controllers|
 |CONTROLLER_ACCOUNT_NAME|Account Name from the License screen in the controller, typically customer1|
 |CONTROLLER_ACCESS_KEY|Access Key from the license page|
