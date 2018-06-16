@@ -1,5 +1,7 @@
 # Install the DaemonSet to monitor the node and containers
 
+This is an example of how to run an AppDynamics machine agent as an OpenShift daemonset in order to monitor the Kubernetes host machine, and any containers running an application agent.
+
 ## Create a service account
 
 `oc create serviceaccount appd`
@@ -28,3 +30,8 @@ containers:
             - name: APPDYNAMICS_CONTROLLER_SSL_ENABLED
               value: "false"
 ```
+
+TODO These could potentially be configured as a ConfigMap. Need to test. 
+
+## Deploy the agent
+`oc create -f appd-agents.yml` 

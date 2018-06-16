@@ -1,19 +1,11 @@
-FROM centos:centos6
-MAINTAINER alana.anderson@appdynamics.com
-
-# Install Oracle Java JDK 8
-# Download the Oracle JDK from http://www.oracle.com/technetwork/java/javase/downloads
-# Download the 64-bit Linux RPM distribution, copy to the directory containing this file and set the version below
-#ENV JDK8_VERSION 92
-#ADD jdk-8u${JDK8_VERSION}-linux-x64.rpm /jdk-linux-x64.rpm
-#RUN yum install -y jdk-linux-x64.rpm
-#RUN rm jdk-linux-x64.rpm
-#ENV JAVA_HOME /usr/java/jdk1.8.0_${JDK8_VERSION}
-#ENV PATH $JAVA_HOME/bin:$PATH
+FROM centos:centos7
+MAINTAINER david.borgeest@appdynamics.com
 
 # Install OpenJDK 8
+#RUN yum install -y java-1.8.0-openjdk-devel
 RUN yum install -y java-1.8.0-openjdk-devel
-ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk.x86_64
+#ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk.x86_64
+ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # set timezone to UTC
@@ -38,6 +30,11 @@ RUN curl -O -k https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERS
 RUN cd ${CATALINA_HOME}/bin;chmod +x *.sh
 RUN rm -rf ${CATALINA_HOME}/webapps/*
 
+
+#================================================
+#================================================
+# Install and build the sample app
+
 # Install Maven
 RUN wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
 RUN sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
@@ -56,7 +53,12 @@ RUN cd /${APP_NAME}; mvn clean install
 RUN cp ${PROJECT_NAME}/target/${APP_NAME}.war ${CATALINA_HOME}/webapps/
 RUN yum install -y unzip
 
-# Scripts to install AppDynamics Agents
+#================================================
+#================================================
+
+
+
+# Scripts to install and run AppDynamics Agents
 ADD install-appdynamics.sh /usr/local/bin/install-appdynamics
 RUN chmod +x /usr/local/bin/install-appdynamics
 
@@ -88,6 +90,9 @@ RUN chmod +x /usr/local/bin/tail-java-agent
 # AppDynamics Agent configuration
 RUN touch /env.sh
 RUN chmod +x /env.sh
+
+# Install AppD Agents
+RUN /usr/local/bin/install-appdynamics
 
 # Tail syslog to keep container running
 CMD  tail -f /var/log/messages
