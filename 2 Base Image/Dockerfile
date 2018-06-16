@@ -95,6 +95,7 @@ RUN chmod +x /env.sh
 RUN /usr/local/bin/install-appdynamics
 
 # Tail syslog to keep container running
+CMD  chmod 644 /var/log/messages
 CMD  tail -f /var/log/messages
 
 # Tomcat listen port
