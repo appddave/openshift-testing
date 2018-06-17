@@ -7,17 +7,22 @@ Create a sample project for the sample application.
 `oc new-project appd-sample`
 
 ## Grant appropriate permissions
-`oc login system:admin`
+`oc login -u system:admin`
 
-`oadm policy add-scc-to-user anyuid system:serviceaccount:appd-sample:default`
+`oc adm policy add-scc-to-user anyuid system:serviceaccount:appd-sample:default`
 
-`oc login {username}`
+`oc login -u {username}`
 
 ## Deploy the sample image
+`oc new-app appddave/appd-sample:1.1`
+
 
 
 
 ## Create a new config map fromt he file appd-configmap.yml 
+
+Update tbe values of this yml file
+
 |Key|Description|
 |--------------------------------|----------------------------------------------------------------|
 |CONTROLLER_URL|AppD Controller URL (eg. 44controllerevents.appdynamics.com)|
@@ -30,10 +35,11 @@ Create a sample project for the sample application.
 
  Add the config map to the sample app.
 
-`oc create configmap appd-config --from-file=appd-configmap.yml`
+`oc create -f appd-configmap.yml`
 
 ## Deploy an image
 
+`oc new-app appddave/appd-sample:1.1`
 
 # Running the application
 
