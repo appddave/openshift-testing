@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  AGENT_VERSION: 4.4.0.0
+  CONTROLLER_ACCESS_KEY: 
+  CONTROLLER_ACCOUNT_NAME: customer1
+  CONTROLLER_PORT: '8090'
+  CONTROLLER_URL: 
+  PORTAL_PASSWORD: 
+  PORTAL_USERNAME: 
+kind: ConfigMap
+metadata:
+  creationTimestamp: '2018-06-12T13:17:49Z'
+  name: appd-config
+  namespace: sample1
+  resourceVersion: '236611'
+  selfLink: /api/v1/namespaces/sample1/configmaps/appd-config
+  uid: 00f9643c-6e43-11e8-860d-08002712a3ea
