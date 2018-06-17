@@ -41,6 +41,10 @@ Update tbe values of this yml file
 
 `oc new-app appddave/appd-sample:1.1`
 
+## Apply the config map to the sample app
+
+`oc set env dc/appd-sample --from=configmap/appd-config`
+
 # Running the application
 
 The simple examples below use curl, but you can [Postman](https://www.getpostman.com/apps) or other REST clients for POST, PUT and DELETE operations and your browser for GET requests.
