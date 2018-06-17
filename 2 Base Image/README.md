@@ -14,14 +14,14 @@ Create a sample project for the sample application.
 `oc login -u {username}`
 
 ## Deploy the sample image
-`oc new-app appddave/appd-sample:1.1`
+`oc new-app appddave/appd-sample:latest`
 
-
+`oc expose svc/appd-sample`
 
 
 ## Create a new config map fromt he file appd-configmap.yml 
 
-Update tbe values of this yml file
+Update the values of this yml file
 
 |Key|Description|
 |--------------------------------|----------------------------------------------------------------|
@@ -31,19 +31,14 @@ Update tbe values of this yml file
 |CONTROLLER_ACCESS_KEY|Access Key from the license page|
 |PORTAL_USERNAME|Username for download.appdynamics.com|
 |PORTAL_PASSWORD|Password for download.appdynamics.com|
-|AGENT_VERSION|Your 4 digit controller version, for example: 4.4.0.0|
+|AGENT_VERSION|Your 4 digit controller version, for example: 4.4.3.0|
 
- Add the config map to the sample app.
+ Create the config map to the sample app and apply.
 
 `oc create -f appd-configmap.yml`
 
-## Deploy an image
-
-`oc new-app appddave/appd-sample:1.1`
-
-## Apply the config map to the sample app
-
 `oc set env dc/appd-sample --from=configmap/appd-config`
+
 
 # Running the application
 
