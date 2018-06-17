@@ -17,13 +17,13 @@ spec:
       containers:
         - env:
             - name: APPDYNAMICS_CONTROLLER_HOST_NAME
-              value: ""
+              value: $(CONTROLLER_URL)
             - name: APPDYNAMICS_CONTROLLER_PORT
-              value: ""
+              value: $(CONTROLLER_PORT)
             - name: APPDYNAMICS_AGENT_ACCOUNT_NAME
-              value: "customer1"
+              value: $(APPDYNAMICS_AGENT_ACCOUNT_NAME)
             - name: APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
-              value: ""
+              value: $(APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY)
             - name: APPDYNAMICS_SIM_ENABLED
               value: "true"
             - name: APPDYNAMICS_DOCKER_ENABLED
