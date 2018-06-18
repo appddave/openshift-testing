@@ -7,7 +7,7 @@ Create a sample project for the sample application.
 `oc new-project appd-sample`
 
 ## Grant appropriate permissions
-`oc login -u system:admin`
+`oc login -u system:admin` or `oc login -u admin -p admin` in a Minishift environment
 
 `oc adm policy add-scc-to-user anyuid system:serviceaccount:appd-sample:default`
 

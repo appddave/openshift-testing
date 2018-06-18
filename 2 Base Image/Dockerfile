@@ -55,47 +55,46 @@ RUN yum install -y unzip
 
 #================================================
 #================================================
+# Copy and install the app agent
 
-
+ENV APPD_INSTALLERS_DIR /opt/appd-installers
+ENV APPD_AGENT_VERSION 4.4.3.23079
+ENV APPD_AGENT_ZIP AppServerAgent-${APPD_AGENT_VERSION}.zip
+RUN mkdir ${APPD_INSTALLERS_DIR}
+ADD ${APPD_AGENT_ZIP} ${APPD_INSTALLERS_DIR}
+RUN unzip -qo ${APPD_INSTALLERS_DIR}/${APPD_AGENT_ZIP} -d ${CATALINA_HOME}/appagent && rm ${APPD_INSTALLERS_DIR}/${APPD_AGENT_ZIP}
 
 # Scripts to install and run AppDynamics Agents
-ADD install-appdynamics.sh /usr/local/bin/install-appdynamics
-RUN chmod +x /usr/local/bin/install-appdynamics
+# ADD install-appdynamics.sh /usr/local/bin/install-appdynamics
+# RUN chmod +x /usr/local/bin/install-appdynamics
 
-ENV MACHINE_AGENT_HOME /machineagent
-ENV MACHINE_AGENT_OUTPUT ${MACHINE_AGENT_HOME}/machine-agent.out
-ENV DB_AGENT_HOME /dbagent
-ENV DB_AGENT_OUTPUT ${DB_AGENT_HOME}/dbagent.out
+# ENV MACHINE_AGENT_HOME /machineagent
+# ENV MACHINE_AGENT_OUTPUT ${MACHINE_AGENT_HOME}/machine-agent.out
 
 # Scripts to start Tomcat and AppDynamics Database/Machine Agents
-ADD start-db-agent.sh /usr/local/bin/start-db-agent
-ADD start-machine-agent.sh /usr/local/bin/start-machine-agent
-ADD start-tomcat.sh /usr/local/bin/start-tomcat
-ADD start-all.sh /usr/local/bin/start-all
+# ADD start-tomcat.sh /usr/local/bin/start-tomcat.sh
 
-RUN chmod +x /usr/local/bin/start-db-agent
-RUN chmod +x /usr/local/bin/start-machine-agent
-RUN chmod +x /usr/local/bin/start-tomcat
-RUN chmod +x /usr/local/bin/start-all
+# RUN chmod +x /usr/local/bin/start-tomcat
 
 # Scripts to tail log file output from AppDynamics Agents
-ADD tail-db-agent.sh /usr/local/bin/tail-db-agent
-ADD tail-machine-agent.sh /usr/local/bin/tail-machine-agent
 ADD tail-java-agent.sh /usr/local/bin/tail-java-agent
 
-RUN chmod +x /usr/local/bin/tail-db-agent
-RUN chmod +x /usr/local/bin/tail-machine-agent
-RUN chmod +x /usr/local/bin/tail-java-agent
+# RUN chmod +x /usr/local/bin/tail-java-agent
 
 # AppDynamics Agent configuration
 RUN touch /env.sh
 RUN chmod +x /env.sh
 
 # Install AppD Agents
-RUN /usr/local/bin/install-appdynamics
+# RUN /usr/local/bin/install-appdynamics
 
 # Tail syslog to keep container running
 CMD  tail -f /var/log/messages
 
 # Tomcat listen port
 EXPOSE 8080
+
+#Starts Tomcat and keeps the container up
+ADD run.sh /run.sh
+RUN chmod +x /*.sh
+ENTRYPOINT ["/run.sh"]

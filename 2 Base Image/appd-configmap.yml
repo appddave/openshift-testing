@@ -1,12 +1,12 @@
 apiVersion: v1
 data:
-  AGENT_VERSION: 4.4.0.0
-  CONTROLLER_ACCESS_KEY: 
+  AGENT_VERSION: 4.4.3.0
+  CONTROLLER_ACCESS_KEY: 3a250c5e-10da-4d3c-9199-b3d3af2655eb 
   CONTROLLER_ACCOUNT_NAME: customer1
   CONTROLLER_PORT: '8090'
-  CONTROLLER_URL: 
-  PORTAL_PASSWORD: 
-  PORTAL_USERNAME: 
+  CONTROLLER_URL: 443controllereum-openshiftlabborgee-ddxm6hny.srv.ravcloud.com 
+  PORTAL_USERNAME: david.borgeest@gmail.com 
+  PORTAL_PASSWORD: 'StaSt176!&^'
 kind: ConfigMap
 metadata:
   creationTimestamp: '2018-06-12T13:17:49Z'
