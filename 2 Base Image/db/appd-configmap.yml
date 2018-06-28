@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  MYSQL_USER: dbuser
+  MYSQL_PASSWORD: dbpass
+  MYSQL_DATABASE: sample_db  
+kind: ConfigMap
+metadata:
+  creationTimestamp: '2018-06-22T13:17:49Z'
+  name: mysql-config
+  namespace: appd-sample 
+  resourceVersion: '236612'
+  selfLink: /api/v1/namespaces/sample1/configmaps/mysql-config
+  uid: 00f9643c-6e43-11e8-860d-08002712a3eb

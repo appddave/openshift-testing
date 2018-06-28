@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  AGENT_VERSION: 4.4.3.0
+  CONTROLLER_ACCESS_KEY: 3a250c5e-10da-4d3c-9199-b3d3af2655eb 
+  CONTROLLER_ACCOUNT_NAME: customer1
+  CONTROLLER_PORT: '8090'
+  CONTROLLER_URL: 443controllereum-openshiftlabborgee-ddxm6hny.srv.ravcloud.com 
+kind: ConfigMap
+metadata:
+  creationTimestamp: '2018-06-12T13:17:49Z'
+  name: appd-web-config
+  namespace: appd-sample 
+  resourceVersion: '236613'
+  selfLink: /api/v1/namespaces/sample1/configmaps/appd-web-config
+  uid: 00f9643c-6e43-11e8-860d-08002712a3ec

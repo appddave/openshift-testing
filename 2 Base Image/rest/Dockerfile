@@ -6,6 +6,7 @@ MAINTAINER david.borgeest@appdynamics.com
 RUN yum install -y java-1.8.0-openjdk-devel
 #ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk.x86_64
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
+ENV JRE_HOME /usr/lib/jvm/jre-1.8.0-openjdk
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # set timezone to UTC
