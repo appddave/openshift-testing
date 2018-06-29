@@ -1,5 +1,7 @@
 # Deploy the web interface
 
+
+
 ## Build tag and push the docker images
 
 `docker build .`
@@ -14,7 +16,7 @@
 
 `oc expose svc/web`
 
-## Create a new config map fromt he file appd-configmap.yml
+## Create a new config map from the file appd-configmap.yml
 
 Update the values of this yml file
 
@@ -28,6 +30,7 @@ Update the values of this yml file
 |APPD_APP_NAME| Name of the application, eg. SampleApp|
 |APPD_TIER_NAME| Name of the tier, eg. Web|
 |APPD_NODE_NAME| Name of the node eg. WebNode1. Note, this should be unique per pod|
+|APP_ID| ID of the application from the controller. Check the 'application' URL parameter|
 
 Create the config map to the sample app and apply.
 

@@ -17,13 +17,13 @@ spec:
       containers:
         - env:
             - name: APPDYNAMICS_CONTROLLER_HOST_NAME
-              value: $(CONTROLLER_URL)
+              value: 443controllereum-openshiftlabborgee-ddxm6hny.srv.ravcloud.com 
             - name: APPDYNAMICS_CONTROLLER_PORT
-              value: $(CONTROLLER_PORT)
+              value: "8090"
             - name: APPDYNAMICS_AGENT_ACCOUNT_NAME
-              value: $(APPDYNAMICS_AGENT_ACCOUNT_NAME)
+              value: "customer1" 
             - name: APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
-              value: $(APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY)
+              value: "3a250c5e-10da-4d3c-9199-b3d3af2655eb"
             - name: APPDYNAMICS_SIM_ENABLED
               value: "true"
             - name: APPDYNAMICS_DOCKER_ENABLED

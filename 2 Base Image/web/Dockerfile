@@ -2,10 +2,10 @@ FROM centos:centos6
 MAINTAINER alana.anderson@appdynamics.com
 
 # Set the APPD environment variables
-ENV CONTROLLER_URL 443controllereum-openshiftlabborgee-ddxm6hny.srv.ravcloud.com 
-ENV CONTROLLER_PORT 8090
-ENV CONTROLLER_ACCOUNT_NAME customer1
-ENV CONTROLLER_ACCESS_KEY 3a250c5e-10da-4d3c-9199-b3d3af2655eb
+#ENV CONTROLLER_URL 
+#ENV CONTROLLER_PORT 
+#ENV CONTROLLER_ACCOUNT_NAME 
+#ENV CONTROLLER_ACCESS_KEY 
 
 # Install Node.js 4.2.1
 RUN yum install -y wget

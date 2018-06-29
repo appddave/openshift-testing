@@ -8,7 +8,7 @@ data:
   APPD_APP_NAME: SampleApp
   APPD_TIER_NAME: Web
   APPD_NODE_NAME: WebNode1
-
+  APP_ID: 39
 kind: ConfigMap
 metadata:
   creationTimestamp: '2018-06-12T13:17:49Z'

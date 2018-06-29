@@ -4,6 +4,8 @@ This is an example of how to run an AppDynamics machine agent as an OpenShift da
 
 ## Create a service account
 
+`oc login -u admin -p admin`
+
 `oc create serviceaccount appd`
 
 `oc policy add-role-to-user view -z appd`
