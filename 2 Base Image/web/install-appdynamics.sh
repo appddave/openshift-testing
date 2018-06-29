@@ -20,12 +20,21 @@ checkEnv() {
   if [ -z ${APP_ID} ]; then
     echo "Warning: APP_ID is empty. You won't be able to access AppDynamics controller through SampleApp."
   fi
+  if [ -z ${APPD_APP_NAME} ]; then
+    echo "Error: APPD_APP_NAME must be set in docker-compose.yml"
+    exit
+  fi
+  if [ -z ${APPD_TIER_NAME} ]; then
+    echo "Error: APPD_TIER_NAME must be set in docker-compose.yml"
+    exit
+  fi
+  if [ -z ${APPD_NODE_NAME} ]; then
+    echo "Error: APPD_NODE_NAME must be set in docker-compose.yml"
+    exit
+  fi
 }
 
 APPD_SSL="false"
-APPD_APP_NAME="SampleApp"
-APPD_TIER_NAME="WebServices"
-APPD_NODE_NAME="WebNode"
 
 installAppd() {
 	echo "Installing AppDynamics:"
