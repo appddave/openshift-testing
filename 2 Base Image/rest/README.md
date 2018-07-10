@@ -11,6 +11,10 @@ Create a sample project for the sample application.
 
 `oc adm policy add-scc-to-user anyuid system:serviceaccount:appd-sample:default`
 
+### Create a router
+`oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:appd-sample:router`
+`oc adm router appd-router --replicas=1 --service-account=router`
+
 `oc login -u {username}`
 
 ## Deploy the sample image
