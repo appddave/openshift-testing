@@ -5,7 +5,7 @@ data:
   CONTROLLER_ACCOUNT_NAME: customer1
   CONTROLLER_PORT: '8090'
   CONTROLLER_URL: 443controllereum-openshiftlabborgee-ddxm6hny.srv.ravcloud.com 
-  PORTAL_USERNAME: david.borgeest@gmail.com 
+  PORTAL_USERNAME: ''
   PORTAL_PASSWORD: ''
 kind: ConfigMap
 metadata:
