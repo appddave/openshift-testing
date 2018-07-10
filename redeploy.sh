@@ -2,8 +2,11 @@
 
 oc login -u system:admin
 oc delete project appd-sample
+sleep 50
+
 oc login -u developer
 oc new-project appd-sample
+oc project appd-sample
 oc login -u system:admin
 oc adm policy add-scc-to-user anyuid system:serviceaccount:appd-sample:default
 oc login -u developer
