@@ -19,6 +19,12 @@ sudo -s
 
 ## Create OpenShift Service Account
 
+Ensure the cluster is running
+
+```bash
+oc cluster up --public-hostname=
+```
+
 In the OpenShift terminal window, type the following:
 
 ```bash
