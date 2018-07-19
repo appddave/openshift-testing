@@ -10,6 +10,13 @@ This app deploys a complete, fully instrumented demo application into OpenShift.
 
 Ensure you have a v4.5 Controller running and available to the OpenShift cluster.
 
+## Root access
+We need to run these commands as root
+
+```bash
+sudo -s
+```
+
 ## Create OpenShift Service Account
 
 In the OpenShift terminal window, type the following:
@@ -82,6 +89,8 @@ oc create -f machine-agent.yaml
 
 # Version info
 
+This lab weas tested on the following versions.
+
 ## Docker Version
 
 ```bash
@@ -105,4 +114,12 @@ Server:
  OS/Arch:         linux/amd64
  Experimental:    false
 
+```
+
+## OpenShift Version
+```bash
+$ oc version
+oc v3.10.0-rc.0+c20e215
+kubernetes v1.10.0+b81c8f8
+features: Basic-Auth GSSAPI Kerberos SPNEGO
 ```
