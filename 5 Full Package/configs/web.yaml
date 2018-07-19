@@ -1,0 +1,57 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: offers-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: offers-web
+    spec:
+      initContainers:
+      - name: agent-repo
+        image: agent-repo:4.5.0
+        imagePullPolicy: Never
+        command: ["cp", "/sharedFiles/AppServerAgent.zip", "/mountPath/AppServerAgent.zip"]
+        volumeMounts:
+        - mountPath: /mountPath
+          name: shared-files
+      volumes:
+        - name: shared-files
+          emptyDir: {}
+      serviceAccountName: appd-agent
+      containers:
+        - name: offers-web
+          image: offers-services
+          imagePullPolicy: Never
+          securityContext:
+            privileged: true
+          envFrom:
+            - configMapRef:
+                name: controller-config
+          env:
+            - name: TIER_NAME
+              value: WebTier
+          ports:
+          - containerPort: 8080
+          volumeMounts:
+            - mountPath: /sharedFiles
+              name: shared-files
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-offers-web
+spec:
+  selector:
+    name: offers-web
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+status:
+  loadBalancer: {}
+

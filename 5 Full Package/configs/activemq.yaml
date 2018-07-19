@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: activemq
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: activemq
+    spec:
+      serviceAccountName: appd-agent
+      containers:
+        - name: activemq
+          image: activemq
+          imagePullPolicy: Never
+          securityContext:
+            privileged: true
+          envFrom:
+            - configMapRef:
+                name: controller-config
+          ports:
+          - containerPort: 8161
+          - containerPort: 61616
+          - containerPort: 61613
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-activemq
+spec:
+  selector:
+    name: activemq
+  ports:
+  - name: "8161"
+    port: 8161
+    targetPort: 8161
+  - name: "61616"
+    port: 61616
+    targetPort: 61616
+  - name: "61613"
+    port: 61613
+    targetPort: 61613
+status:
+  loadBalancer: {}

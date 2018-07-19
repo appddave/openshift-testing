@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: offers-load
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: offers-load
+    spec:
+      containers:
+        - name: offers-load
+          image: offers-load
+          imagePullPolicy: Never
+      restartPolicy: Always
