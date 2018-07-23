@@ -22,7 +22,7 @@ Build the image using the Dockerfile in the /initContainer directory
 docker build -t {your docker un}/agent-repo:4.5
 ```
 
-You will need to download the agent, and update paths and version numbers to match.
+You will need to [download the agent](https://download.appdynamics.com/), and update paths and version numbers to match.
 
 Push the image to your repo
 
