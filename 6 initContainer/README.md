@@ -6,6 +6,14 @@ We use the initContainer feature of an OpenShift pod to copy the agent binaries 
 
 This ensures we can upgrade, and configure the agent as required without having to rebuild the application containers.
 
+## Create the configMap
+
+Update the controller details in the configMap.yaml file and create the configMap:
+
+```
+oc create -f configMap.yaml
+```
+
 ## Prepare the InitContainer
 
 Build the image using the Dockerfile in the /initContainer directory
