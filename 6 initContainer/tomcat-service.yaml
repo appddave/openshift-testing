@@ -10,10 +10,12 @@ spec:
         name: tomcat-service
     spec:
       initContainers:
-      - name: appddave/agent-repo
-        image: appddave/agent-repo:4.3
-        imagePullPolicy: Never
+      - name: agent-repo
+        image: appddave/agent-repo:4.4
+        imagePullPolicy: Always
         command: ["cp", "/sharedFiles/AppServerAgent.zip", "/mountPath/AppServerAgent.zip"]
+        command: ["cp", "/sharedFiles/startup.sh", "/mountPath/startup.sh"]
+        command: ["cp", "/sharedFiles/extractAgent.sh", "/mountPath/extractAgent.sh"]
         volumeMounts:
         - mountPath: /mountPath
           name: shared-files
@@ -23,8 +25,9 @@ spec:
       serviceAccountName: appd-agent
       containers:
         - name: tomcat-service
-          image: tomcat:9 
-          imagePullPolicy: Never
+          image: tomcat:9
+          imagePullPolicy: Always
+          command: ["/sharedFiles/startup.sh"]
           securityContext:
             privileged: true
           envFrom:
@@ -32,7 +35,7 @@ spec:
                 name: controller-config
           env:
             - name: TIER_NAME
-              value: JavaApp 
+              value: JavaApp
           ports:
           - containerPort: 8080
           volumeMounts:
@@ -54,4 +57,3 @@ spec:
     targetPort: 8080
 status:
   loadBalancer: {}
-
