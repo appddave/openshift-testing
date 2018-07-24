@@ -37,3 +37,7 @@ TODO These could potentially be configured as a ConfigMap. Need to test.
 
 ## Deploy the agent
 `oc create -f appd-agents.yml` 
+
+## Example of building from Dockerfile
+
+An example of building from a base image can be seen [here](https://github.com/michaelenglert/ECommerce/tree/master/ECommerce-Docker/ECommerce-MachineAgent).
